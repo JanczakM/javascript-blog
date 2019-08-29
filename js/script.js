@@ -2,7 +2,6 @@
 
 function titleClickHandler(event){
   event.preventDefault();
-  console.log('Link was clicked!');
   const clickedElement = this;
 
   /* [DONE] remove class 'active' from all article links  */
@@ -12,7 +11,6 @@ function titleClickHandler(event){
     activeLink.classList.remove('active');
   }
   /* [DONE] add class 'active' to the clicked link */
-  console.log('Clicked Element:' , clickedElement);
   clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
@@ -22,11 +20,17 @@ function titleClickHandler(event){
     activeArticle.classList.remove('active');
   }
   /* [DONE] get 'href' attribute from the clicked link */
-  const href = clickedElement.getAttribute('href');
+  const href = clickedElement.getAttribute('href').replace("#", "");
 
   /* find the correct article using the selector (value of 'href' attribute) */
 
-  /* add class 'active' to the correct article */
+  const articles = document.querySelectorAll('.posts .post');
+
+  for(let article of articles) {
+    if (article.getAttribute('id') == href) {   /* add class 'active' to the correct article */
+      article.classList.add('active');
+    }
+  }
 }
 
 const links = document.querySelectorAll('.titles a');
