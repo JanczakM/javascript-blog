@@ -38,9 +38,10 @@ function generateTitleLinks(){
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
-
+   /* find all the articles and save them to variable: articles */
   const articles = document.querySelectorAll(optArticleSelector);
-
+  /* create empty html variable */
+  let html ='';
   /* for each article */
   for(let article of articles) {
     /* get the article id */
@@ -51,10 +52,11 @@ function generateTitleLinks(){
 
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    /* insert link into titleList */
+    /* insert link into html variable */
+    html = html + linkHTML;
   }
 
-
+  titleList.innerHTML = html;
 }
 
 generateTitleLinks();
