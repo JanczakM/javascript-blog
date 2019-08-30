@@ -22,6 +22,25 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
+  margin: 0;
+}
+
+header {
+  background-color: white;
+  background: url('/images/cake-background.jpg');
+  background-position: center;
+  background-size: cover;
+  margin: 0 10px 10px 10px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+h1, h2, h3 {
+  color: deeppink;
+}
+
+a {
+  text-decoration: none;
 }
 
 .container {
@@ -60,7 +79,7 @@ body {
   background: $color-light;
   margin-right: 10px;
   padding: 40px;
-  border: 1px solid $color-dark;
+  border: 1px solid lightgrey;
   border-radius: 5px;
 }
 
@@ -68,10 +87,12 @@ body {
 
 .logo {
   font-family: $font-logo;
+  text-shadow: 2px 2px 3px pink;
   font-weight: 400;
   font-size: 104px;
-  line-height: 1;
+  line-height: 300px;
   text-align: center;
+  margin: 0;
 }
 
 /* Lists */
@@ -116,5 +137,21 @@ body {
   display: flex;
   p {
     margin: 0 10px 0 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .posts {
+    order: 0;
+  }
+
+  .sidebar {
+    order: 1;
+    margin: 10px 10px 10px 0;
   }
 }
