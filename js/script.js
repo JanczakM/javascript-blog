@@ -34,7 +34,7 @@ function generateTitleLinks(){
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
-   /* find all the articles and save them to variable: articles */
+  /* find all the articles and save them to variable: articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* create empty html variable */
   let html ='';
