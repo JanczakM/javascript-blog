@@ -102,14 +102,16 @@ function tagClickHandler(event){
   /* make a new constant "tag" and extract tag from the "href" constant */
   const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
-  const activeLink = document.querySelector('.list .active');
+  const activeLinks = document.querySelectorAll('.list .active');
   /* remove active */
-  if (activeLink) {
+  for (let activeLink of activeLinks) {
     activeLink.classList.remove('active');
   }
   /* find all tag links with "href" attribute equal to the "href" constant */
-  const tagLink = document.querySelector('a[href="' + href + '"]');
-  tagLink.classList.add('active');
+  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
+  for (let tagLink of tagLinks) {
+    tagLink.classList.add('active');
+  }
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
 }
