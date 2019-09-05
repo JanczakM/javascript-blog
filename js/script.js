@@ -103,7 +103,7 @@ function tagClickHandler(event){
   /* make a new constant "tag" and extract tag from the "href" constant */
   const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
-  const activeLinks = document.querySelectorAll('.list .active');
+  const activeLinks = document.querySelectorAll('a.active[href^="#tag-"]');
   /* remove active */
   for (let activeLink of activeLinks) {
     activeLink.classList.remove('active');
@@ -119,7 +119,7 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
-  const tagLinks = document.querySelectorAll('.list a[href^="#tag-"]');
+  const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
   /* START LOOP: for each link */
   for(let tagLink of tagLinks) {
     /* add tagClickHandler as event listener for that link */
@@ -158,7 +158,7 @@ function authorClickHandler(event){
   /* make a new constant "author" and extract author from the "href" constant */
   const author = href.replace('#author-', '');
   /* find all author links with class active */
-  const activeLinks = document.querySelectorAll('.post-author a.active');
+  const activeLinks = document.querySelectorAll('a.active[href^="#author-"]');
   /* remove active */
   for (let activeLink of activeLinks) {
     activeLink.classList.remove('active');
@@ -174,7 +174,7 @@ function authorClickHandler(event){
 
 function addClickListenersToAuthors(){
   /* find all links to authors */
-  const authorLinks = document.querySelectorAll('.post-author a[href^="#author-"]');
+  const authorLinks = document.querySelectorAll('a[href^="#author-"]');
   /* START LOOP: for each link */
   for(let authorLink of authorLinks) {
     /* add tagClickHandler as event listener for that link */

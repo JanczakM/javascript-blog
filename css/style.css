@@ -120,6 +120,10 @@ a {
   font-style: italic;
 }
 
+.post-author .active {
+  font-weight: bold;
+}
+
 .post-tags {
   display: -ms-flexbox;
   display: flex;

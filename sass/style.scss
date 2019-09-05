@@ -134,6 +134,9 @@ a {
 
 .post-author {
   font-style: italic;
+  .active {
+    font-weight: bold;
+  }
 }
 
 .post-tags {
