@@ -1,13 +1,27 @@
 'use strict';
 
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.list.authors',
-  optArticleAuthorSelector = '.post-author';
+// OPTS DECLARATION
+
+const opts = {
+  articles: {
+    selector: '.post',
+    tagsSelector: '.post-tags .list',
+  },
+  titles: {
+    selector: '.post-title',
+    listSelector: '.titles',
+  },
+  authors: {
+    selector: '.post-author',
+    listSelector: '.list.authors',
+  },
+  cloud: {
+    classCount: 5,
+    classPrefix: 'tag-size-',
+  },
+};
+
+// FUNCTIONS
 
 function titleClickHandler(event){
 
@@ -37,10 +51,10 @@ function titleClickHandler(event){
 function generateTitleLinks(customSelector = ''){
 
   /* remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(opts.titles.listSelector);
   titleList.innerHTML = '';
   /* find all the articles and save them to variable: articles */
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.articles.selector + customSelector);
   /* create empty html variable */
   let html ='';
   /* for each article */
@@ -50,7 +64,7 @@ function generateTitleLinks(customSelector = ''){
     const articleId = article.getAttribute('id');
     /* find the title element */
     /* get the title from the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(opts.titles.selector).innerHTML;
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     /* insert link into html variable */
@@ -85,19 +99,19 @@ function calculateTagClass(count, params){
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
-  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
-  return optCloudClassPrefix + classNumber;
+  const classNumber = Math.floor( percentage * (opts.cloud.classCount - 1) + 1 );
+  return opts.cloud.classPrefix + classNumber;
 }
 
 function generateTags(){
   /* [NEW] create a new variable allTags with an empty object */
   let allTags = {};
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articles.selector);
   /* START LOOP: for every article: */
   for(let article of articles) {
     /* find tags wrapper */
-    const tagsWrapper = article.querySelector(optArticleTagsSelector);
+    const tagsWrapper = article.querySelector(opts.articles.tagsSelector);
     /* make html variable with empty string */
     let html = '';
     /* get tags from data-tags attribute */
@@ -182,11 +196,11 @@ function generateAuthors(){
   /* [NEW] create a new variable allAuthors with an empty object */
   let allAuthors = {};
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articles.selector);
   /* START LOOP: for every article: */
   for(let article of articles) {
     /* find authors wrapper */
-    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    const authorWrapper = article.querySelector(opts.authors.selector);
     /* find author */
     const author = article.getAttribute('data-author');
     /* create html of the link */
@@ -205,7 +219,7 @@ function generateAuthors(){
   for(let author in allAuthors) {
     authorHtml = authorHtml + '<li><a href="#author-' + author + '">' + author + '</a>' + '<span> (' + allAuthors[author] + ')</span></li>';
   }
-  document.querySelector(optAuthorsListSelector).innerHTML = authorHtml;
+  document.querySelector(opts.authors.listSelector).innerHTML = authorHtml;
 }
 
 generateAuthors();
