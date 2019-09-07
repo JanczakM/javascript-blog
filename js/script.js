@@ -279,7 +279,6 @@ function generateAuthors(){
       count: allAuthors[author]
     });
   }
-
   document.querySelector(opts.authors.listSelector).innerHTML = templates.authorListLink(allAuthorsData);
 }
 
