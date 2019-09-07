@@ -8,7 +8,7 @@ const templates = {
   authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
   tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
   authorListLink: Handlebars.compile(document.querySelector('#template-author-list-link').innerHTML)
-}
+};
 
 // OPTS DECLARATION
 
@@ -274,7 +274,6 @@ function generateAuthors(){
 
   for(let author in allAuthors) {
     /* AUTHORS LIST IN RIGHT COLUMN */
-    //authorHtml = authorHtml + '<li><a href="#author-' + author + '">' + author + '</a>' + '<span> (' + allAuthors[author] + ')</span></li>';
     allAuthorsData.authors.push({
       author: author,
       count: allAuthors[author]
